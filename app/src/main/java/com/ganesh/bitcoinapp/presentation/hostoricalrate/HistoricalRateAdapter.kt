@@ -10,7 +10,7 @@ import com.ganesh.bitcoinapp.databinding.AdapterBitcoinHistoricalListBinding
 import com.ganesh.bitcoinapp.model.BitCoinHistoricalData
 
 
-class BitCoinHistoricalAdapter : RecyclerView.Adapter<BitCoinHistoricalAdapter.ViewHolder>() {
+class HistoricalRateAdapter : RecyclerView.Adapter<HistoricalRateAdapter.ViewHolder>() {
 
     private var items: List<BitCoinHistoricalData> = mutableListOf()
 

@@ -12,7 +12,7 @@ import com.ganesh.bitcoinapp.util.OnItemClickListener
 import com.ganesh.bitcoinapp.util.addOnItemClickListener
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
-import com.ganesh.common2.extension.showSnackbar
+import com.ganesh.common.extension.showSnackbar
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel

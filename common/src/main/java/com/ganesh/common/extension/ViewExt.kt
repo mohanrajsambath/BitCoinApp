@@ -1,4 +1,4 @@
-package com.ganesh.common2.extension
+package com.ganesh.common.extension
 
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.ganesh.common2.utils.Event
+import com.ganesh.common.utils.Event
 
 /**
  * Transforms static java function Snackbar.make() to an extension function on View.

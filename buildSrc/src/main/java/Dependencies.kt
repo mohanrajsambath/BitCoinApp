@@ -42,7 +42,7 @@ object Versions {
     val retrofitGson = "2.4.0"
     val gson = "2.8.5"
     val okHttp = "3.12.1"
-    val coroutines = "1.1.1"
+    val coroutines = "1.3.3"
     val koin = "1.0.2"
     val timber = "4.7.1"
     val lifecycle = "2.1.0-alpha04"
@@ -138,4 +138,8 @@ object TestLibraries {
     val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     // DATA BINDING
     val databinding = "androidx.databinding:databinding-compiler:${Versions.databinding}"
+
+
+
+   // testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3'
 }

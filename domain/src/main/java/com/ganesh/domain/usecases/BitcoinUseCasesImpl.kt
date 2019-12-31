@@ -5,7 +5,7 @@ import com.ganesh.domain.model.BpiDomainModel
 import com.ganesh.domain.model.ResultState
 import com.ganesh.domain.repository.HistoricalRateRepository
 
-class BitcoinUseCasesImpl(
+open class BitcoinUseCasesImpl(
     private val repo: HistoricalRateRepository
 ) : BitCoinUseCases {
 

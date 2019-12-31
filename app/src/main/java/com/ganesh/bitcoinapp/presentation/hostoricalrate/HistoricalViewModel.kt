@@ -10,7 +10,8 @@ import com.ganesh.domain.usecases.BitCoinUseCases
 import kotlinx.coroutines.launch
 
 open
-class HistoricalViewModel constructor(val bitCoinUseCases: BitCoinUseCases) : BaseViewModel() {
+class HistoricalViewModel constructor(private val bitCoinUseCases: BitCoinUseCases) :
+    BaseViewModel() {
 
     fun currencyDetailsButtonClicked() =
         navigate(BitCoinDetailsFragmentDirections.actionBitcoinToCurrencyListFragment())
@@ -25,11 +26,9 @@ class HistoricalViewModel constructor(val bitCoinUseCases: BitCoinUseCases) : Ba
             when (val result = bitCoinUseCases.getHistoricalData(currencyName)) {
 
                 is ResultState.Success -> {
-                    result.data.let {
-                        handlerSuccess(it.dataMap.map {
-                            BitCoinHistoricalData(it.key, it.value.toString())
-                        })
-                    }
+                    handlerSuccess(result.data.dataMap.map {
+                        BitCoinHistoricalData(it.key, it.value.toString())
+                    })
                 }
 
                 is ResultState.Error -> {
@@ -39,7 +38,6 @@ class HistoricalViewModel constructor(val bitCoinUseCases: BitCoinUseCases) : Ba
             }
 
             showProgressView.value = false
-
         }
 
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import com.ganesh.common.utils.NavigationCommand
-import com.ganesh.common2.utils.Event
+import com.ganesh.common.utils.Event
 
 
 abstract class BaseViewModel : ViewModel() {
@@ -18,7 +18,6 @@ abstract class BaseViewModel : ViewModel() {
     val errorMessage: MutableLiveData<String> = MutableLiveData()
 
     // progress indicator
-    //ERROR message
     val showProgressView: MutableLiveData<Boolean> = MutableLiveData()
 
     // FOR NAVIGATION

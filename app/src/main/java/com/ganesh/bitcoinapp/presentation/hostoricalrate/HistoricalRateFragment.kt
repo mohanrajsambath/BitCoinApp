@@ -9,19 +9,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.ganesh.bitcoinapp.databinding.FragmentBitcoinHistoricalBinding
 import com.ganesh.bitcoinapp.presentation.bitcoin.CurrencyInfoInterface
-
-
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
-import com.ganesh.common2.extension.showSnackbar
+import com.ganesh.common.extension.showSnackbar
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 /**
  * A simple [Fragment] subclass.
  */
-class BitCoinHistoricalFragment : BaseFragment() {
+class HistoricalRateFragment : BaseFragment() {
     lateinit var binding: FragmentBitcoinHistoricalBinding
     private val viewModel: HistoricalViewModel by viewModel()
 
@@ -41,7 +38,7 @@ class BitCoinHistoricalFragment : BaseFragment() {
         binding?.let {
             it.lifecycleOwner = viewLifecycleOwner
             it.adapter =
-                BitCoinHistoricalAdapter()
+                HistoricalRateAdapter()
         }
 
 
@@ -49,7 +46,7 @@ class BitCoinHistoricalFragment : BaseFragment() {
 
         currency((parentFragment as CurrencyInfoInterface).getDefaultCurrencyName())
 
-        return binding?.root
+        return binding.root
 
     }
 
@@ -61,11 +58,11 @@ class BitCoinHistoricalFragment : BaseFragment() {
     fun setUpObserver() {
 
         viewModel.data.observe(this, Observer {
-            binding?.adapter?.update(it)
+            binding.adapter?.update(it)
         })
 
         viewModel.errorMessage.observe(this, Observer {
-            binding?.adapter?.update(listOf())
+            binding.adapter?.update(listOf())
             showSnackbar(it, Snackbar.LENGTH_LONG)
         })
 

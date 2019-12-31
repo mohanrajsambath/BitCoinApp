@@ -9,12 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.ganesh.bitcoinapp.databinding.FragmentBitcoinCurrentRateBinding
 import com.ganesh.bitcoinapp.model.CurrentRateData
-import com.ganesh.bitcoinapp.presentation.bitcoin.BitCoinDetailsFragment
 import com.ganesh.bitcoinapp.presentation.bitcoin.CurrencyInfoInterface
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
-import com.ganesh.common2.extension.showSnackbar
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -92,7 +89,7 @@ class CurrentRateFragment : BaseFragment() {
 
 
     /**
-     * init all observer of viewModel
+     * init all observer of viewModel's liveData
      */
     fun setUpObserver() {
 

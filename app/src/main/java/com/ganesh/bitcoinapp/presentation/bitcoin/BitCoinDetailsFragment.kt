@@ -11,7 +11,7 @@ import com.ganesh.bitcoinapp.R
 import com.ganesh.bitcoinapp.databinding.FragmentBitcoinDetailsBinding
 import com.ganesh.bitcoinapp.presentation.SharedViewModel
 import com.ganesh.bitcoinapp.presentation.currentrate.CurrentRateFragment
-import com.ganesh.bitcoinapp.presentation.hostoricalrate.BitCoinHistoricalFragment
+import com.ganesh.bitcoinapp.presentation.hostoricalrate.HistoricalRateFragment
 import com.ganesh.bitcoinapp.presentation.hostoricalrate.HistoricalViewModel
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
@@ -76,8 +76,10 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
 
 
     fun loadChildFragments() {
+
         val historicalFragment =
-            BitCoinHistoricalFragment()
+            HistoricalRateFragment()
+
         val currentRateFragment =
             CurrentRateFragment()
 
@@ -98,7 +100,7 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
             currentRateFragment.currency(currencyName)
 
             val historicalFragment =
-                findFragmentByTag(histroricalFragmentTag) as BitCoinHistoricalFragment
+                findFragmentByTag(histroricalFragmentTag) as HistoricalRateFragment
             historicalFragment.currency(currencyName)
 
         }
@@ -110,6 +112,5 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
     fun currencyNameToView(currencyName: String) {
         binding?.btnCurrencyName?.text = currencyName
     }
-
 
 }
