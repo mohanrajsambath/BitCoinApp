@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.ganesh.bitcoinapp.model.CurrentRateData" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="20dp"
+        tools:context=".presentation.currency.CurrencyListFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_current_rate_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_rate"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_current_rate_vlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.rate}"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toRightOf="@+id/txt_current_rate_label"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_updated_on_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/updated_on"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_current_rate_label" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_updated_on_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.updateOn}"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toRightOf="@+id/txt_updated_on_label"
+            app:layout_constraintTop_toBottomOf="@+id/txt_current_rate_label" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="currenyModel"
+            type="com.ganesh.bitcoinapp.model.CurrencyData" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp">
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="start|center"
+            android:textAlignment="gravity"
+            android:textSize="16sp"
+            tools:text="@{currenyModel.currnecyName}" />
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
