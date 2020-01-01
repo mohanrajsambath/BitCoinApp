@@ -24,19 +24,15 @@ class HistoricalRateRepositoryImpl(
             return ResultState.Error<Throwable>(Throwable(Exception("no data"))) as ResultState<BpiDomainModel>
         }
 
-       var r =  currencyNetworkSource.getHostoricalData(currency, startDate, endDate).errorBody()
+        var result = currencyNetworkSource.getHostoricalData(currency, startDate, endDate)
 
-        print(r)
-        print(r)
+        result.errorBody()?.let {
+            return ResultState.Error<Throwable>(Throwable(Exception(it.toString()))) as ResultState<BpiDomainModel>
+        }
 
-        val result = currencyNetworkSource.getHostoricalData(currency, startDate, endDate).body()
-            .let {
-                it?.toDomainModel()
-            }
-
-
-        return ResultState.Success(result) as ResultState<BpiDomainModel>
-
+        result.body().let {
+            return ResultState.Success(it?.toDomainModel()) as ResultState<BpiDomainModel>
+        }
 
     }
 }

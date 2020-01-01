@@ -5,14 +5,12 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -47,7 +45,7 @@ dependencies {
     implementation Libraries.koin
     implementation Libraries.koinViewModel
 
-    
+
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
@@ -58,10 +56,6 @@ dependencies {
 
     testImplementation 'org.mockito:mockito-core:2.16.0'
 
-//androidTestImplementation 'org.mockito:mockito-core:2.16.0'
 
-//androidTestImplementation 'org.mockito:mockito-android:2.7.22'
-
-    //Prettytime
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 }
