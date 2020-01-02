@@ -23,35 +23,7 @@ var appModule = module {
 
 }
 
-var sharedModulel = module {
-    viewModel {
-        SharedViewModel()
-    }
-}
 
-var currencyModeulel = module {
-
-    val use = single<CurrencyUseCases> {
-        CurrencyUseCasesImpl(get())
-    }
-
-    single<BitCoinUseCases> { BitcoinUseCasesImpl(get()) }
-
-    viewModel {
-        CurrencyViewModel(useCase = get())
-    }
-
-}
-
-var currentBitCoinViewMode = module {
-    viewModel {
-        CurrentRateViewModel(get())
-    }
-
-    single<CurrentRateUseCases> {
-        CurrentRateUseCasesImpl(get())
-    }
-}
 
 
 
