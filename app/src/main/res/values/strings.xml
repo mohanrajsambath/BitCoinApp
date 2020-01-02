@@ -2,10 +2,13 @@
     <string name="app_name">BitCoinApp</string>
     <string name="action_settings">Settings</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="currency">Currency</string>
     <string name="title_domain">domin</string>
     <string name="title_data">data</string>
-    <string name="current_rate">Current Rate:</string>
+    <string name="current_rate">Rate:</string>
     <string name="updated_on">Updated on</string>
+    <string name="current_bitcoin_rate">Current BitCoin Rate:</string>
+
+    <string name="historical_bitcoin_rate">Historical BitCoin Rate:</string>
 </resources>

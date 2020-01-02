@@ -20,22 +20,33 @@
         tools:context=".presentation.currency.CurrencyListFragment">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#333333"
+            android:gravity="center"
+            android:text="@string/current_bitcoin_rate"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_current_rate_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/current_rate"
-            android:textColor="#000000"
+            android:textColor="#333333"
+
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_current_rate_vlue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{model.rate}"
-            android:textColor="#000000"
+            android:textColor="#666666"
             app:layout_constraintLeft_toRightOf="@+id/txt_current_rate_label"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"  />
 
 
         <com.google.android.material.textview.MaterialTextView
@@ -43,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/updated_on"
-            android:textColor="#000000"
+            android:textColor="#333333"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_current_rate_label" />
 
@@ -52,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{model.updateOn}"
-            android:textColor="#000000"
+            android:textColor="#666666"
             app:layout_constraintLeft_toRightOf="@+id/txt_updated_on_label"
             app:layout_constraintTop_toBottomOf="@+id/txt_current_rate_label" />
 

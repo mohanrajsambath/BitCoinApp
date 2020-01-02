@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.ganesh.bitcoinapp.databinding.FragmentBitcoinHistoricalBinding
-import com.ganesh.bitcoinapp.presentation.bitcoin.CurrencyInfoInterface
+import com.ganesh.bitcoinapp.presentation.bitcoinhome.CurrencyInfoInterface
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
 import com.ganesh.common.extension.showSnackbar
@@ -26,6 +26,13 @@ class HistoricalRateFragment : BaseFragment() {
         return viewModel
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // collect default currency name from parent
+        currency((parentFragment as CurrencyInfoInterface).getDefaultCurrencyName())
+        setUpObserver()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,15 +48,14 @@ class HistoricalRateFragment : BaseFragment() {
                 HistoricalRateAdapter()
         }
 
-
-        setUpObserver()
-
-        currency((parentFragment as CurrencyInfoInterface).getDefaultCurrencyName())
-
         return binding.root
-
     }
 
+    /**
+     * assign currently selected Currency value
+     *
+     * @param name currency name
+     */
     fun currency(name: String) {
         viewModel.getHistoricalData(name)
     }
@@ -59,18 +65,17 @@ class HistoricalRateFragment : BaseFragment() {
 
         viewModel.data.observe(this, Observer {
             binding.adapter?.update(it)
+            binding.recyclerViewVisibilites = true
         })
 
         viewModel.errorMessage.observe(this, Observer {
-            binding.adapter?.update(listOf())
+            binding.recyclerViewVisibilites = false
             showSnackbar(it, Snackbar.LENGTH_LONG)
         })
 
         viewModel.showProgressView.observe(this, Observer {
-            binding.visibilities = it
+            binding.progressVisibilites = it
         })
 
     }
-
-
 }

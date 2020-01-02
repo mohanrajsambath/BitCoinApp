@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ganesh.bitcoinapp.model.CurrentRateData
 import com.ganesh.bitcoinapp.model.toAppModel
-import com.ganesh.bitcoinapp.presentation.bitcoin.BitCoinDetailsFragmentDirections
 import com.ganesh.common.base.BaseViewModel
 import com.ganesh.domain.model.ResultState
 import com.ganesh.domain.usecases.CurrentRateUseCases
@@ -12,10 +11,7 @@ import kotlinx.coroutines.launch
 
 class CurrentRateViewModel constructor(val bitCoinUseCases:CurrentRateUseCases ) : BaseViewModel() {
 
-    fun currencyDetailsButtonClicked() =
-        navigate(BitCoinDetailsFragmentDirections.actionBitcoinToCurrencyListFragment())
-
-   var data: MutableLiveData<CurrentRateData> = MutableLiveData()
+    var data: MutableLiveData<CurrentRateData> = MutableLiveData()
 
     fun getHistoricalData(currencyName :String) {
         showProgressView.value = true

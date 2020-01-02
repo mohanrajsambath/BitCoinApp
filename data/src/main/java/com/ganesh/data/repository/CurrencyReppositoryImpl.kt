@@ -19,24 +19,29 @@ class CurrencyReppositoryImpl constructor(
 
     override
     suspend fun getCurrencyLitFromCacheOrNetwork(): ResultState<List<CurrencyDomainModel>> {
+
         return if (connectivity.hasNetworkAccess()) {
             getDataFromNetwork()
         } else return getDataFromLocal()
+
     }
 
     private suspend fun getDataFromNetwork(): ResultState<List<CurrencyDomainModel>> {
-
-        val result = currencyNetworkSource.getCurrencyList()
-            .body()?.let {
-                it.let {
-                    currencyDBSource.insert(it)
-                      it.map { model ->
-                        model.toDoaminModel()
-                    }.toMutableList()
+        try {
+            val result = currencyNetworkSource.getCurrencyList()
+                .body()?.let {
+                    it.let {
+                        currencyDBSource.insert(it)
+                        it.map { model ->
+                            model.toDoaminModel()
+                        }.toMutableList()
+                    }
                 }
-            }
 
-        return ResultState.Success(result) as ResultState<List<CurrencyDomainModel>>
+            return ResultState.Success(result) as ResultState<List<CurrencyDomainModel>>
+        } catch (e: Exception) {
+            return ResultState.Error<Throwable>(Throwable(Exception("Unknow"))) as ResultState<List<CurrencyDomainModel>>
+        }
     }
 
     private suspend fun getDataFromLocal(): ResultState<List<CurrencyDomainModel>> {

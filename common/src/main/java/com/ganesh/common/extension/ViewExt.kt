@@ -25,3 +25,4 @@ fun Fragment.setupSnackbar(lifecycleOwner: LifecycleOwner, snackbarEvent: LiveDa
         }
     })
 }
+

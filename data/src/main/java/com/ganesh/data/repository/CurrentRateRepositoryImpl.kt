@@ -31,22 +31,27 @@ class CurrentRateRepositoryImpl(
 
 
     suspend fun fromNetwork(currency: String): ResultState<CurrentBpiDomainModel> {
+
+
         val model = CurrentBpiDomainModel(currency, "", "")
 
-        currencyNetworkSource.getCurrentData(currency).body()
-            ?.let {
+        try {
+            currencyNetworkSource.getCurrentData(currency).body()
+                ?.let {
 
-                it.getAsJsonObject("bpi").apply {
-                    model.amount = getAsJsonObject(currency).get("rate").asString
+                    it.getAsJsonObject("bpi").apply {
+                        model.amount = getAsJsonObject(currency).get("rate").asString
+                    }
+                    it.getAsJsonObject("time").apply {
+                        model.updatedGMTTime = get("updated").asString
+                    }
+
                 }
-                it.getAsJsonObject("time").apply {
-                    model.updatedGMTTime = get("updated").asString
-                }
 
-
-            }
-
-        rateDBSource.insert(model)
+            rateDBSource.insert(model)
+        } catch (e: Exception) {
+            return ResultState.Error<CurrentBpiDomainModel>(Throwable(Exception("Unkn")))
+        }
 
         return ResultState.Success(model)
     }

@@ -3,7 +3,8 @@ package com.ganesh.bitcoinapp.presentation.hostoricalrate
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ganesh.bitcoinapp.model.BitCoinHistoricalData
-import com.ganesh.bitcoinapp.presentation.bitcoin.BitCoinDetailsFragmentDirections
+import com.ganesh.bitcoinapp.presentation.bitcoinhome.BitCoinHomFragmentDirections
+
 import com.ganesh.common.base.BaseViewModel
 import com.ganesh.domain.model.ResultState
 import com.ganesh.domain.usecases.BitCoinUseCases
@@ -14,10 +15,15 @@ class HistoricalViewModel constructor(private val bitCoinUseCases: BitCoinUseCas
     BaseViewModel() {
 
     fun currencyDetailsButtonClicked() =
-        navigate(BitCoinDetailsFragmentDirections.actionBitcoinToCurrencyListFragment())
+        navigate(BitCoinHomFragmentDirections.actionBitcoinToCurrencyListFragment())
 
     var data: MutableLiveData<List<BitCoinHistoricalData>> = MutableLiveData()
 
+    /**
+     * get Historical data from domain layer
+     *
+     * @param currencyName
+     */
     fun getHistoricalData(currencyName: String) {
         showProgressView.value = true
 
@@ -43,12 +49,27 @@ class HistoricalViewModel constructor(private val bitCoinUseCases: BitCoinUseCas
 
     }
 
+    /**
+     * handling result of historical data
+     *
+     * @param result
+     */
     fun handlerSuccess(result: List<BitCoinHistoricalData>?) {
         result?.let {
-            data.value = result
+
+            val sortedList = result.sortedByDescending {
+                it.date
+            }
+
+            data.value = sortedList
         }
     }
 
+    /**
+     * handling error message
+     *
+     * @param result
+     */
     fun handlerFailuer(result: String?) {
         result.let {
             errorMessage.value = result

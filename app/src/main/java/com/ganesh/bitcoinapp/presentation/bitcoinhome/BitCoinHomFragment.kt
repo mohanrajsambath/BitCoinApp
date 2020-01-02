@@ -1,4 +1,4 @@
-package com.ganesh.bitcoinapp.presentation.bitcoin
+package com.ganesh.bitcoinapp.presentation.bitcoinhome
 
 
 import android.os.Bundle
@@ -22,7 +22,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
+class BitCoinHomFragment : BaseFragment(), CurrencyInfoInterface {
     val rateFragmentTag = "currentRateFragment"
     val histroricalFragmentTag = "historicalRateFragment"
     var defaultName = "EUR"
@@ -35,6 +35,11 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
 
     override fun getViewModel(): BaseViewModel {
         return viewModel
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setUpObserver()
     }
 
     override fun onCreateView(
@@ -56,7 +61,7 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
             }
 
             currencyNameToView(defaultName)
-            setUpObserver()
+
         }
 
         return binding.root
@@ -75,6 +80,10 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
     }
 
 
+    /**
+     * load child fragments
+     *
+     */
     fun loadChildFragments() {
 
         val historicalFragment =
@@ -92,6 +101,11 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
     }
 
 
+    /**
+     * update currency value to both fragment 1. current rate fragment 2. historical fragment
+     *
+     * @param currencyName
+     */
     fun updateCurrencyValue(currencyName: String) {
 
         childFragmentManager.apply {
@@ -109,6 +123,11 @@ class BitCoinDetailsFragment : BaseFragment(), CurrencyInfoInterface {
 
     }
 
+    /**
+     * update curreny value to view
+     *
+     * @param currencyName
+     */
     fun currencyNameToView(currencyName: String) {
         binding?.btnCurrencyName?.text = currencyName
     }

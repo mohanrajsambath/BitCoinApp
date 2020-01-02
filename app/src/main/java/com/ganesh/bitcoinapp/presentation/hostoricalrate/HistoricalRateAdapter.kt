@@ -51,7 +51,6 @@ class HistoricalRateAdapter : RecyclerView.Adapter<HistoricalRateAdapter.ViewHol
         )
     ) : ViewHolder(binding.root) {
 
-
         fun bind(model: BitCoinHistoricalData) {
             binding.dateValue = model
         }

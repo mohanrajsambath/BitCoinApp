@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.ganesh.bitcoinapp.databinding.FragmentBitcoinCurrentRateBinding
 import com.ganesh.bitcoinapp.model.CurrentRateData
-import com.ganesh.bitcoinapp.presentation.bitcoin.CurrencyInfoInterface
+import com.ganesh.bitcoinapp.presentation.bitcoinhome.CurrencyInfoInterface
 import com.ganesh.common.base.BaseFragment
 import com.ganesh.common.base.BaseViewModel
 import kotlinx.coroutines.*
@@ -31,6 +31,13 @@ class CurrentRateFragment : BaseFragment() {
         return viewModel
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // collect default currency name from parent
+        currency((parentFragment as CurrencyInfoInterface).getDefaultCurrencyName())
+        setUpObserver()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,12 +50,7 @@ class CurrentRateFragment : BaseFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        currencyName = (parentFragment as CurrencyInfoInterface).getDefaultCurrencyName()
-
-        setUpObserver()
-
         return binding.root
-
     }
 
     override fun onResume() {

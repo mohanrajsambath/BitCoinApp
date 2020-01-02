@@ -22,6 +22,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:padding="10dp"
         tools:context=".presentation.currency.CurrencyListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -29,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:adapter="@{adapter}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
         <ProgressBar
             android:id="@+id/progress_circular"

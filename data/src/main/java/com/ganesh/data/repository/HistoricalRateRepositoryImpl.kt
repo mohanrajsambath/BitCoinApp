@@ -20,18 +20,23 @@ class HistoricalRateRepositoryImpl(
         endDate: String
     ): ResultState<BpiDomainModel> {
 
-        if (!connectivity.hasNetworkAccess()) {
-            return ResultState.Error<Throwable>(Throwable(Exception("no data"))) as ResultState<BpiDomainModel>
-        }
+        try {
 
-        var result = currencyNetworkSource.getHostoricalData(currency, startDate, endDate)
+            if (!connectivity.hasNetworkAccess()) {
+                return ResultState.Error<Throwable>(Throwable(Exception("No Internet"))) as ResultState<BpiDomainModel>
+            }
 
-        result.errorBody()?.let {
-            return ResultState.Error<Throwable>(Throwable(Exception(it.toString()))) as ResultState<BpiDomainModel>
-        }
+            var result = currencyNetworkSource.getHostoricalData(currency, startDate, endDate)
 
-        result.body().let {
-            return ResultState.Success(it?.toDomainModel()) as ResultState<BpiDomainModel>
+            result.errorBody()?.let {
+                return ResultState.Error<Throwable>(Throwable(Exception(it.toString()))) as ResultState<BpiDomainModel>
+            }
+
+            result.body().let {
+                return ResultState.Success(it?.toDomainModel()) as ResultState<BpiDomainModel>
+            }
+        } catch (e: Exception) {
+            return ResultState.Error<Throwable>(Throwable(e)) as ResultState<BpiDomainModel>
         }
 
     }
