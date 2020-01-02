@@ -4,7 +4,11 @@ import com.ganesh.domain.model.BpiDomainModel
 import com.ganesh.domain.model.CurrencyDomainModel
 import com.ganesh.domain.model.ResultState
 
-
-interface BitCoinUseCases {
+/**
+ * Created by GaneshKumar
+ *
+ * HistoricalUseCases bitcoin data use case
+ */
+interface HistoricalUseCases {
     suspend fun getHistoricalData(currencyName:String): ResultState<BpiDomainModel>
 }

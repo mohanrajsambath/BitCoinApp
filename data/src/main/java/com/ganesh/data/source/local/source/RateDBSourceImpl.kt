@@ -1,14 +1,10 @@
-package com.ganesh.data.local.source
+package com.ganesh.data.source.local.source
 
-import com.ganesh.data.local.RateEntities
-import com.ganesh.data.local.dao.CurrencyDao
 import com.ganesh.data.local.dao.RateDao
 
 import com.ganesh.data.mapper.toDomainModel
 import com.ganesh.data.mapper.toMapperModel
-import com.ganesh.data.remote.model.CurrencyModel
 
-import com.ganesh.domain.model.CurrencyDomainModel
 import com.ganesh.domain.model.CurrentBpiDomainModel
 
 

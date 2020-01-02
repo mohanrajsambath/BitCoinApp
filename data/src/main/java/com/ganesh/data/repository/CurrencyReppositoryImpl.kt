@@ -3,11 +3,12 @@ package com.ganesh.data.repository
 
 import com.ganesh.data.common.Connectivity
 import com.ganesh.data.mapper.toDoaminModel
-import com.ganesh.data.local.source.CurrencyDBSource
-import com.ganesh.data.remote.source.HttpClient
+import com.ganesh.data.source.local.source.CurrencyDBSource
+import com.ganesh.data.remote.HttpClient
 import com.ganesh.domain.model.CurrencyDomainModel
 import com.ganesh.domain.model.ResultState
 import com.ganesh.domain.repository.CurrencyRepository
+import java.io.IOException
 
 
 @Suppress("UNCHECKED_CAST")
@@ -39,8 +40,8 @@ class CurrencyReppositoryImpl constructor(
                 }
 
             return ResultState.Success(result) as ResultState<List<CurrencyDomainModel>>
-        } catch (e: Exception) {
-            return ResultState.Error<Throwable>(Throwable(Exception("Unknow"))) as ResultState<List<CurrencyDomainModel>>
+        } catch (e: IOException) {
+            return ResultState.Error<Throwable>(Throwable(Exception(e))) as ResultState<List<CurrencyDomainModel>>
         }
     }
 

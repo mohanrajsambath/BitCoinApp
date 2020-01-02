@@ -23,7 +23,7 @@ var currencyModeulel = module {
         CurrencyUseCasesImpl(get())
     }
 
-    single<BitCoinUseCases> { BitcoinUseCasesImpl(get()) }
+    single<HistoricalUseCases> { HistoricalUseCasesImpl(get()) }
 
     viewModel {
         CurrencyViewModel(useCase = get())

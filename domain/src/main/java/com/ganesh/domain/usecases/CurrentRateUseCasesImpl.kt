@@ -7,6 +7,11 @@ import com.ganesh.domain.model.ResultState
 import com.ganesh.domain.repository.CurrenctRateRepository
 import com.ganesh.domain.repository.HistoricalRateRepository
 
+/**
+ * Created by GaneshKumar
+ *
+ * CurrentRate data use case implementation
+ */
 class CurrentRateUseCasesImpl(
     private val repo: CurrenctRateRepository
 ) : CurrentRateUseCases {

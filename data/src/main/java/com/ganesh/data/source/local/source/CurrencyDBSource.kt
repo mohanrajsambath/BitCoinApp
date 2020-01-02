@@ -1,4 +1,4 @@
-package com.ganesh.data.local.source
+package com.ganesh.data.source.local.source
 
 import com.ganesh.data.remote.model.CurrencyModel
 import com.ganesh.domain.model.CurrencyDomainModel

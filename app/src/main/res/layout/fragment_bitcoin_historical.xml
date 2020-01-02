@@ -38,7 +38,6 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcr_currency_list"
             visibilities="@{recyclerViewVisibilites}"

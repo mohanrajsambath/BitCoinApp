@@ -7,11 +7,11 @@ import com.ganesh.bitcoinapp.presentation.bitcoinhome.BitCoinHomFragmentDirectio
 
 import com.ganesh.common.base.BaseViewModel
 import com.ganesh.domain.model.ResultState
-import com.ganesh.domain.usecases.BitCoinUseCases
+import com.ganesh.domain.usecases.HistoricalUseCases
 import kotlinx.coroutines.launch
 
 open
-class HistoricalViewModel constructor(private val bitCoinUseCases: BitCoinUseCases) :
+class HistoricalViewModel constructor(private val bitCoinUseCases: HistoricalUseCases) :
     BaseViewModel() {
 
     fun currencyDetailsButtonClicked() =

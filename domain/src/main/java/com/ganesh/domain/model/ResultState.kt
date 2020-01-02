@@ -1,6 +1,10 @@
 package com.ganesh.domain.model
 
-
+/**
+ * Created by GaneshKumar
+ *
+ * Common Result model
+ */
 sealed class ResultState<T> {
 
     data class Loading<T>(val data: T) : ResultState<T>()

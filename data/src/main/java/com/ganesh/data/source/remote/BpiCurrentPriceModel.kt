@@ -1,4 +1,4 @@
-package com.ganesh.data.remote.model
+package com.ganesh.data.source.remote
 
 import com.ganesh.domain.model.CurrentBpiDomainModel
 
@@ -24,7 +24,7 @@ data class BpiCurrentPriceModel(
     val bpi: String
 )
 
-fun BpiCurrentPriceModel.toDomain(name:String,rate:String): CurrentBpiDomainModel {
+fun BpiCurrentPriceModel.toDomain(name:String, rate:String): CurrentBpiDomainModel {
     return CurrentBpiDomainModel(name,rate, time.updated)
 }
 

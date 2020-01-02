@@ -8,10 +8,14 @@ import com.ganesh.domain.repository.HistoricalRateRepository
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-open class BitcoinUseCasesImpl(
+/**
+ * Created by GaneshKumar
+ *
+ * HistoricalUseCasesImpl use case implementation
+ */
+open class HistoricalUseCasesImpl(
     private val repo: HistoricalRateRepository
-) : BitCoinUseCases {
+) : HistoricalUseCases {
 
     override suspend fun getHistoricalData(currencyName: String): ResultState<BpiDomainModel> {
         return repo.getHistoricalData(currencyName, getDateOn(-14), getDateOn(0))

@@ -1,7 +1,6 @@
-package com.ganesh.data.remote.source
+package com.ganesh.data.remote
 
-import com.ganesh.data.remote.model.BpiCurrentPriceModel
-import com.ganesh.data.remote.model.BpiHistoricalOuterModel
+import com.ganesh.data.source.remote.BpiHistoricalOuterModel
 import com.ganesh.data.remote.model.CurrencyModel
 import com.google.gson.JsonObject
 import retrofit2.Response

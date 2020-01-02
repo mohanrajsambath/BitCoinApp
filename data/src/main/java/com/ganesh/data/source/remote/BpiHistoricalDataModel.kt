@@ -1,4 +1,4 @@
-package com.ganesh.data.remote.model
+package com.ganesh.data.source.remote
 
 data class BpiHistoricalOuterModel(
     // val bpi: BpiHistoricalDataModel,

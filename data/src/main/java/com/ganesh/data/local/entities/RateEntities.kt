@@ -1,11 +1,13 @@
-package com.ganesh.data.local
+package com.ganesh.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ganesh.domain.model.CurrencyDomainModel
-
-
+/**
+ * Created by GaneshKumar
+ *
+ * Rate entites
+ */
 @Entity(tableName = "RateTable")
 data class RateEntities(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) val id: Long,

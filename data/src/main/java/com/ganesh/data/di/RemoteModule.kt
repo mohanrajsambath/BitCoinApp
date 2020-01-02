@@ -2,11 +2,11 @@ package com.ganesh.data.di
 
 import com.ganesh.data.common.Connectivity
 import com.ganesh.data.common.ConnectivityImpl
-import com.ganesh.data.local.source.CurrencyDBSource
-import com.ganesh.data.local.source.CurrencyDBSourceImpl
-import com.ganesh.data.local.source.RateDBSource
-import com.ganesh.data.local.source.RateDBSourceImpl
-import com.ganesh.data.remote.source.HttpClient
+import com.ganesh.data.source.local.source.CurrencyDBSource
+import com.ganesh.data.source.local.source.CurrencyDBSourceImpl
+import com.ganesh.data.source.local.source.RateDBSource
+import com.ganesh.data.source.local.source.RateDBSourceImpl
+import com.ganesh.data.remote.HttpClient
 import com.ganesh.data.repository.HistoricalRateRepositoryImpl
 import com.ganesh.data.repository.CurrencyReppositoryImpl
 import com.ganesh.data.repository.CurrentRateRepositoryImpl
@@ -25,7 +25,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 import retrofit2.converter.moshi.MoshiConverterFactory
-
+/**
+ * Created by GaneshKumar
+ *
+ * module for retrofit
+ */
 
 val createRemoteModule = module {
 
@@ -42,25 +46,10 @@ val createRemoteModule = module {
             .baseUrl("https://api.coindesk.com/v1/bpi/")
             .addConverterFactory(GsonConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
-
-            //.addConverterFactory(GsonConverterFactory.create())
-            // .addConverterFactory(SimpleXmlConverterFactory.create())
             .build()
     }
 
     factory { get<Retrofit>().create(HttpClient::class.java) }
 
-    factory<CurrencyRepository> { CurrencyReppositoryImpl(get(), get(), get()) }
 
-    factory<CurrencyDBSource> { CurrencyDBSourceImpl(get()) }
-
-    factory<RateDBSource> { RateDBSourceImpl(get()) }
-
-    factory<HistoricalRateRepository> { HistoricalRateRepositoryImpl(get(), get()) }
-
-    factory<CurrenctRateRepository> { CurrentRateRepositoryImpl(get(), get(),get()) }
-
-    single<Connectivity> {
-        ConnectivityImpl(androidContext())
-    }
 }

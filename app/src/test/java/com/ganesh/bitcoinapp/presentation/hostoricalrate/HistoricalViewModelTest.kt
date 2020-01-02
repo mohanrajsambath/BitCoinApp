@@ -4,7 +4,7 @@ package com.ganesh.bitcoinapp.presentation.hostoricalrate
 import com.ganesh.bitcoinapp.BaseTest
 import com.ganesh.domain.model.BpiDomainModel
 import com.ganesh.domain.model.ResultState
-import com.ganesh.domain.usecases.BitCoinUseCases
+import com.ganesh.domain.usecases.HistoricalUseCases
 import com.nhaarman.mockito_kotlin.verify
 import kotlinx.coroutines.runBlocking
 
@@ -20,7 +20,7 @@ import org.mockito.MockitoAnnotations
 class HistoricalViewModelTest : BaseTest() {
 
     @Mock
-    private lateinit var usecase: BitCoinUseCases
+    private lateinit var usecase: HistoricalUseCases
     @InjectMocks
     private lateinit var historicalViewModel: HistoricalViewModel
     private lateinit var spyViewModel: HistoricalViewModel

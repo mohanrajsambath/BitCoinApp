@@ -1,11 +1,14 @@
-package com.ganesh.data.local
+package com.ganesh.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ganesh.domain.model.CurrencyDomainModel
 
-
+/**
+ * Created by GaneshKumar
+ *
+ * currency entities
+ */
 @Entity(tableName = "CurrencyTable")
 data class CurrencyEntities(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) val id: Long,
